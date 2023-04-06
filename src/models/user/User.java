@@ -2,6 +2,7 @@ package models.user;
 
 import models.address.IAddress;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,16 +16,16 @@ public class User {
     private Date lastLogin;
     private ArrayList<IAddress> addressList;
 
-    public User(String name, String surname, String email, String password, String job, int age, Date lastLogin, ArrayList<IAddress> addressList) {
+    public User(String name, String surname, String email, String password, String job, int age) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.job = job;
         this.age = age;
-        this.lastLogin = lastLogin;
-        this.addressList = addressList;
+        this.lastLogin = Date.from(Instant.now());
     }
+
 
     public String getName() {
         return name;
