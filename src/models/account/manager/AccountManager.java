@@ -8,14 +8,14 @@ import java.util.TreeSet;
 
 public class AccountManager {
     private final Scanner scan = new Scanner(System.in);
-    private TreeSet<Account> dataList;
+    private TreeSet<Account> dataList = new TreeSet<>();
 
     public void createAccount() {
         String name, surname, email, password, job, age, accountType;
 
         System.out.print("What's your name: ");
         name = scan.nextLine();
-        System.out.println("What is your surname: ");
+        System.out.print("What is your surname: ");
         surname = scan.nextLine();
         System.out.print("Enter your email: ");
         email = scan.nextLine();
@@ -39,7 +39,6 @@ public class AccountManager {
                 dataList.add(new Enterprise(user));
             }
         }
-
     }
 
     public void login(String email, String password) {
@@ -48,8 +47,7 @@ public class AccountManager {
                 account.login(email, password);
                 if (account.loginStatus() == AuthenticationStatus.SUCCESS) {
                     User user = account.getUser();
-
-                    //print user's process
+                    System.out.println("Login success");
 
                 }
 
