@@ -7,8 +7,11 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 public class AccountManager {
+    User user;
+    Account account;
     private final Scanner scan = new Scanner(System.in);
     private TreeSet<Account> dataList = new TreeSet<>();
+
 
     public void createAccount() {
         String name, surname, email, password, job, age, accountType;
@@ -46,7 +49,8 @@ public class AccountManager {
             try {
                 account.login(email, password);
                 if (account.loginStatus() == AuthenticationStatus.SUCCESS) {
-                    User user = account.getUser();
+                    user = account.getUser();
+                    this.account = account;
                     System.out.println("Login success");
 
                 }
@@ -56,6 +60,34 @@ public class AccountManager {
 
             }
         }
+    }
+
+    public void userProcess() {
+        System.out.println("Hi there!" + user.getName() + "You can select the below sections");
+
+        while (true) {
+            String choice;
+
+            System.out.println("1-Show My Info");
+            System.out.println("2-Buy Insurance");
+            System.out.println("3-Show My Insurance List");
+            System.out.println("4-Add Address");
+            System.out.println("5-Show All Address");
+            System.out.println("q- For exit");
+            System.out.print("Enter your choice: ");
+            choice = scan.nextLine();
+
+            switch (choice) {
+                case "1" -> account.showUserInfo();
+                case "2" -> account.addInsurancePolicy();
+
+
+            }
+
+
+        }
+
+
     }
 
     public TreeSet<Account> getDataList() {

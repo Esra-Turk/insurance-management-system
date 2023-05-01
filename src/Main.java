@@ -1,3 +1,4 @@
+import models.account.Account;
 import models.account.manager.AccountManager;
 
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Main {
             Scanner scan = new Scanner(System.in);
             String process, email, password;
 
-            System.out.println("Options\n1-Create Account\n2-Login\n3-Exit");
+            System.out.println("Options\n1-Create Account\n2-Login\n3-Exit\n4-Admin Login");
             System.out.print("Enter the process: ");
             process = scan.nextLine();
 
@@ -24,7 +25,18 @@ public class Main {
                     manager.login(email, password);
                 }
                 case "3" -> System.exit(0);
-                case "4" -> System.out.println(manager.getDataList());
+                case "4" -> {
+                    System.out.print("Please enter the admin password: ");
+                    String password2 = scan.nextLine();
+                    if (password2.equals("admin1234")) {
+                        System.out.println("Printing all accounts and passwords in the system ...");
+                        for (Account a : manager.getDataList())
+                            System.out.println("Email : " + a.getUser().getEmail()
+                                    + " \nPassword : " + a.getUser().getPassword()
+                                    + "\nName: " + a.getUser().getName() + " " + a.getUser().getSurname());
+
+                    }
+                }
             }
 
         }

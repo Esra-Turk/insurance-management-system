@@ -1,8 +1,13 @@
 package models.insurance;
 
-public class ResidenceInsurance extends Insurance{
+public class ResidenceInsurance extends Insurance {
+
+    public ResidenceInsurance(int price) {
+        super(price, "Residence");
+    }
+
     @Override
     public double calculate() {
-        return 0;
+        return (this.getPriceInsurance() * 0.4);
     }
 }
