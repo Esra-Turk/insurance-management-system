@@ -1,5 +1,6 @@
 package models.account;
 
+import models.insurance.Insurance;
 import models.user.User;
 
 public class Individual extends Account {
@@ -8,8 +9,9 @@ public class Individual extends Account {
     }
 
     @Override
-    public void addInsurancePolicy() {
-
+    public void addInsurancePolicy(Insurance insurance) {
+        insurance.setPriceInsurance(insurance.calculate());
+        super.getInsuranceList().add(insurance);
     }
 
 }

@@ -21,7 +21,7 @@ public abstract class Account implements Comparable<Account> {
         this.user = user;
     }
 
-    public abstract void addInsurancePolicy();
+    public abstract void addInsurancePolicy(Insurance insurance);
 
     @Override
     public int compareTo(Account o) {

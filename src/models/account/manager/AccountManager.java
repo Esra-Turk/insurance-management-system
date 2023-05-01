@@ -79,7 +79,6 @@ public class AccountManager {
 
             switch (choice) {
                 case "1" -> account.showUserInfo();
-                case "2" -> account.addInsurancePolicy();
 
 
             }
